@@ -1,6 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
+// Gabriel, o código de deletar tá aba de favoritos.
 void main() => runApp(MyApp());
 
 // #docregion MyApp
@@ -16,14 +17,13 @@ class MyApp extends StatelessWidget {
       home: RandomWords(),
     );
   }
-// #enddocregion build
-}
-// #enddocregion MyApp
 
-// #docregion RWS-var
+}
+
 class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
   final _saved = <WordPair>{};
+  final edt = <WordPair>{};
   final _biggerFont = const TextStyle(fontSize: 18.0);
   // #enddocregion RWS-var
 
@@ -38,25 +38,19 @@ class _RandomWordsState extends State<RandomWords> {
           if (index >= _suggestions.length) {
             _suggestions.addAll(generateWordPairs().take(10)); /*4*/
           }
-          return _buildRow(_suggestions[index]);
+          return _buildRow(_suggestions[index], index);
         });
   }
-  // #enddocregion _buildSuggestions
 
-  // #docregion _buildRow
-  Widget _buildRow(WordPair pair) {
+  Widget _buildRow(WordPair pair, index) {
     final alreadySaved = _saved.contains(pair);
     return ListTile(
-      title: Text(
-        pair.asPascalCase,
+
+      title: TextFormField(initialValue: _suggestions[index].asSnakeCase,
         style: _biggerFont,
       ),
-      trailing: Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.red : null,
-        semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
-      ),
-      onTap: () {
+
+      trailing: IconButton(onPressed: () {
         setState(() {
           if (alreadySaved) {
             _saved.remove(pair);
@@ -65,6 +59,12 @@ class _RandomWordsState extends State<RandomWords> {
           }
         });
       },
+          icon:Icon(Icons.favorite,
+
+              color: alreadySaved ? Colors.amber : null,
+              semanticLabel: alreadySaved ? 'Remove from saved' : 'Save')
+      ),
+
     );
   }
   // #enddocregion _buildRow
