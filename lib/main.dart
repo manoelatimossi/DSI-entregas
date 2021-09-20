@@ -46,10 +46,10 @@ class _RandomWordsState extends State<RandomWords> {
     final alreadySaved = _saved.contains(pair);
     return ListTile(
 
-      title: TextFormField(initialValue: _suggestions[index].asSnakeCase,
-        style: _biggerFont,
+      title: ListTile(title: Text('$pair')),
+      onTap: (
+      edit
       ),
-
       trailing: IconButton(onPressed: () {
         setState(() {
           if (alreadySaved) {
@@ -87,6 +87,31 @@ class _RandomWordsState extends State<RandomWords> {
     );
   }
   // #enddocregion RWS-build
+void edit(){
+  Navigator.of(context).push(
+    MaterialPageRoute<void>(
+      builder: (BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(
+              title: Text('Edit Suggestions'),
+
+            ),
+            body: ListView.builder(
+              itemCount: _suggestions.length,
+              itemBuilder: (context, index) {
+                final item = _suggestions[index];
+                return ListTile(
+                    title: TextFormField(initialValue: _suggestions[index].asCamelCase,
+                      style: _biggerFont,)
+                );
+
+              },
+            ));
+      },
+    ),
+  );
+}
+
 
   void _pushSaved() {
     Navigator.of(context).push(
