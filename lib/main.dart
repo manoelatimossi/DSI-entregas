@@ -99,11 +99,21 @@ void edit(){
             body: ListView.builder(
               itemCount: _suggestions.length,
               itemBuilder: (context, index) {
-                final item = _suggestions[index];
+                String aux;
                 return ListTile(
-                    title: TextFormField(initialValue: _suggestions[index].asCamelCase,
-                      style: _biggerFont,)
-                );
+                    title: TextFormField(initialValue: _suggestions[index].asString,
+                      style: _biggerFont,
+
+                      onFieldSubmitted: (value)  =>
+
+                          setState(() {
+                            aux = value.substring(0,1);
+                            var aux2 = value.substring(1,);
+                            _suggestions[index] = WordPair(aux,aux2);
+                          }
+                          ),
+                    ));
+
 
               },
             ));
@@ -126,7 +136,7 @@ void edit(){
                 itemBuilder: (context, index) {
                   final item = _suggestions[index];
                   return Dismissible(
-                    key: Key(item.asLowerCase),
+                    key: Key(item.asCamelCase),
                     onDismissed: (direction) {
                       setState(() {
                         print("MaterialPageRoute index: $index");
