@@ -102,8 +102,14 @@ void edit( List <WordPair> _suggestions, int index){
 
             ),
 
-            body: TextFormField(initialValue:_suggestions[index].asString
-            ));
+            body: TextFormField(initialValue:_suggestions[index].asString,
+            onFieldSubmitted:(value) =>setState(
+                () {
+                  var aux = value.substring(0,1);
+                  var aux2 = value.substring(1,);
+                  _suggestions[index] = WordPair(aux, aux2);
+                }
+            )));
       },
     ),
   );
