@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "834958910829",
+    "project_id": "bandnamesurvey-7acb8",
+    "storage_bucket": "bandnamesurvey-7acb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834958910829:android:28a5f20823d40e9c10a664",
+        "android_client_info": {
+          "package_name": "com.example.entrega2_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834958910829-ovjg52v0kpsthqpdht2g0p3q9qgb7h6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCU6WXlSaJYDQTk8zTp6ZyYHl0DyIgXRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834958910829-ovjg52v0kpsthqpdht2g0p3q9qgb7h6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
